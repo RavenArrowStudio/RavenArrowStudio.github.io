@@ -1,1 +1,14 @@
+# 指定远程主题（Hacker主题）
+remote_theme: pages-themes/hacker@v0.2.0
 
+# 添加必要的插件
+plugins:
+  - jekyll-remote-theme
+
+# 站点基本信息（必须填写）
+title: RavenArrow Studio
+description: A VR Game Website
+
+# 可选配置（按需添加）
+# show_downloads: true   # 是否显示下载链接
+# google_analytics: 你的追踪ID  # 如果需要Google分析
