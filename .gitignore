@@ -1,0 +1,11 @@
+# Jekyll build artifacts
+_site/
+.jekyll-cache/
+.sass-cache/
+.bundle/
+vendor/bundle/
+
+# Local preview helpers (not used by GitHub Pages)
+serve.bat
+check.ps1
+Gemfile.lock

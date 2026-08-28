@@ -1,0 +1,29 @@
+- slug: rhythm-boxing-padwork
+  name: "Rhythm Boxing: Padwork"
+  tag: Early Access
+  link: https://www.meta.com/en-gb/experiences/rhythm-boxing-padwork/1246744721857505/
+  card_thumb: /assets/images/CoverImageSquare.png
+  video: "https://www.youtube.com/watch?v=tsslx5Zjcxw"
+  intro: "is an immersive VR boxing trainer that puts you face-to-face with multiple iconic fighting styles. No opponents. No damage bars. Just you, the pads, and the pure art of combination punching."
+  sections:
+    - heading: "Train Like the Legends"
+      image: /assets/images/training-UI.png
+      text: "Each style is a complete workout experience:"
+      list:
+        - "<strong>Pacquiao Style</strong> — Lightning-fast combinations that test your reflexes and hand speed."
+        - "<strong>Tyson Style</strong> — Devastating power punches that demand proper weight transfer and hip rotation."
+        - "<strong>GGG Style</strong> — Pressure fighting with non-stop volume and aggressive forward movement."
+    - heading: "Rhythm-Based Padwork"
+      image: /assets/images/slip-final.png
+      text: "Every combination follows a distinct rhythm. Land your punches on beat, and you'll unlock higher scores, longer combos, and a deeper connection to the flow of each style. Miss the rhythm? The pads will reset. Your form breaks. You start again."
+    - heading: "What You'll Get"
+      image: /assets/images/passthrough-mode-final.png
+      list:
+        - "Passthrough mode — see the real world around you—train safely with less risk of injury."
+        - "Multiple unique style modules — each with 20+ signature combination drills"
+        - "Full-body workout — engage your core, shoulders, and legs with proper form"
+        - "Endless replayability — Repeat. Refine. Become instinct."
+  closing: "No experience needed. No gym required. Just put on your headset and find your rhythm."
+  privacy:
+    label: "Privacy Policy"
+    url: /privacy.html

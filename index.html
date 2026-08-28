@@ -11,44 +11,64 @@ title: RavenArrow Studio
     This is the official home for my VR game projects.</p>
 
 <section>
-    <h1>🎮 Current Project</h1>
-    <div class="project-card">
-        <h2>Rhythm Boxing: Padwork</h2>
-        <span class="tag">Early Access</span>
+    <h1>🎮 Projects</h1>
 
-        <img src="{{ '/assets/images/CoverImage.png' | relative_url }}" alt="Rhythm Boxing: Padwork" class="project-promo">
-
-        <p><strong>Rhythm Boxing: Padwork</strong> is an immersive VR boxing trainer that puts you face-to-face with multiple iconic fighting styles. No opponents. No damage bars. Just you, the pads, and the pure art of combination punching.</p>
-
-        <h4>Train Like the Legends</h4>
-        <p>Each style is a complete workout experience:</p>
-        <ul>
-            <li><strong>Pacquiao Style</strong> — Lightning-fast combinations that test your reflexes and hand speed.</li>
-            <li><strong>Tyson Style</strong> — Devastating power punches that demand proper weight transfer and hip rotation.</li>
-            <li><strong>GGG Style</strong> — Pressure fighting with non-stop volume and aggressive forward movement.</li>
-        </ul>
-
-        <h4>Rhythm-Based Padwork</h4>
-        <p>Every combination follows a distinct rhythm. Land your punches on beat, and you'll unlock higher scores, longer combos, and a deeper connection to the flow of each style. Miss the rhythm? The pads will reset. Your form breaks. You start again.</p>
-
-        <h4>What You'll Get</h4>
-        <ul>
-            <li>Multiple unique style modules — each with 20+ signature combination drills</li>
-            <li>Full-body workout — engage your core, shoulders, and legs with proper form</li>
-            <li>Endless replayability — Repeat. Refine. Become instinct.</li>
-        </ul>
-
-        <p><strong>No experience needed. No gym required. Just put on your headset and find your rhythm.</strong></p>
+    <div class="projects-grid">
+        {% for p in site.data.projects %}
+        <button class="proj-card" data-slug="{{ p.slug }}">
+            <img src="{{ p.card_thumb | relative_url }}" alt="{{ p.name }}">
+            <h3>{{ p.name }}</h3>
+            {% if p.link %}<a href="{{ p.link }}" class="tag-link" target="_blank" rel="noopener">{% endif %}<span class="tag">{{ p.tag }}</span>{% if p.link %}</a>{% endif %}
+        </button>
+        {% endfor %}
     </div>
+
+    <div id="project-detail" class="project-detail">
+        {% for p in site.data.projects %}
+        <div class="project-card{% if forloop.first %} is-active{% endif %}" data-slug="{{ p.slug }}">
+            <h2>{{ p.name }}</h2>
+            {% if p.link %}<a href="{{ p.link }}" class="tag-link" target="_blank" rel="noopener">{% endif %}<span class="tag">{{ p.tag }}</span>{% if p.link %}</a>{% endif %}
+            {% if p.video %}
+            {% assign vurl = p.video %}
+            {% if vurl contains "youtu.be/" %}{% assign vid = vurl | split: "youtu.be/" | last %}{% elsif vurl contains "watch?v=" %}{% assign vid = vurl | split: "watch?v=" | last | split: "&" | first %}{% else %}{% assign vid = vurl | split: "embed/" | last | split: "?" | first %}{% endif %}
+            <div class="video-embed"><iframe src="https://www.youtube.com/embed/{{ vid }}" title="{{ p.name }} trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+            {% elsif p.detail_thumb %}
+            <img src="{{ p.detail_thumb | relative_url }}" alt="{{ p.name }}" class="section-image">
+            {% endif %}
+            <p><strong>{{ p.name }}</strong> {{ p.intro }}</p>
+            {% for s in p.sections %}
+            <h4>{{ s.heading }}</h4>
+            {% if s.image %}<img src="{{ s.image | relative_url }}" alt="{{ s.heading }}" class="section-image">{% endif %}
+            {% if s.text %}<p>{{ s.text }}</p>{% endif %}
+            {% if s.list %}<ul>{% for li in s.list %}<li>{{ li }}</li>{% endfor %}</ul>{% endif %}
+            {% endfor %}
+            <p><strong>{{ p.closing }}</strong></p>
+            {% if p.privacy and p.privacy.url %}<p class="project-privacy"><a href="{{ p.privacy.url | relative_url }}">{{ p.privacy.label | default: "Privacy Policy" }}</a></p>{% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        (function () {
+            var cards = document.querySelectorAll('.proj-card');
+            var details = document.querySelectorAll('#project-detail .project-card');
+            cards.forEach(function (card) {
+                card.addEventListener('click', function () {
+                    var slug = card.getAttribute('data-slug');
+                    details.forEach(function (d) {
+                        d.classList.toggle('is-active', d.getAttribute('data-slug') === slug);
+                    });
+                    cards.forEach(function (c) {
+                        c.classList.toggle('is-active', c === card);
+                    });
+                });
+            });
+        })();
+    </script>
 </section>
 
     <h2>Contact</h2>
     <p>For business inquiries, please email me at: <a href="mailto:jarodying@live.com">jarodying@live.com</a></p>
-
-    <h2>Links</h2>
-    <ul>
-        <li><a href="https://ravenarrow.studio/privacy.html">Privacy Policy</a></li>
-    </ul>
 
     <div class="footer">
         <p>&copy; 2026 RavenArrow Studio. All rights reserved.</p>
