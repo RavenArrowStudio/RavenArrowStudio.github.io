@@ -43,6 +43,20 @@ title: RavenArrow Studio
             {% if s.list %}<ul>{% for li in s.list %}<li>{{ li }}</li>{% endfor %}</ul>{% endif %}
             {% endfor %}
             <p><strong>{{ p.closing }}</strong></p>
+            {% if p.videos and p.videos.size > 0 %}
+            <div class="videos">
+                {% for v in p.videos %}
+                {% if v.url %}
+                <div class="video-item">
+                    <p class="video-title">{{ v.title }}</p>
+                    {% assign vurl = v.url %}
+                    {% if vurl contains "youtu.be/" %}{% assign vid = vurl | split: "youtu.be/" | last %}{% elsif vurl contains "watch?v=" %}{% assign vid = vurl | split: "watch?v=" | last | split: "&" | first %}{% else %}{% assign vid = vurl | split: "embed/" | last | split: "?" | first %}{% endif %}
+                    <div class="video-embed"><iframe src="https://www.youtube.com/embed/{{ vid }}" title="{{ v.title }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
             {% if p.privacy and p.privacy.url %}<p class="project-privacy"><a href="{{ p.privacy.url | relative_url }}">{{ p.privacy.label | default: "Privacy Policy" }}</a></p>{% endif %}
         </div>
         {% endfor %}

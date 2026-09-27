@@ -24,6 +24,9 @@
         - "Full-body workout — engage your core, shoulders, and legs with proper form"
         - "Endless replayability — Repeat. Refine. Become instinct."
   closing: "No experience needed. No gym required. Just put on your headset and find your rhythm."
+  videos:
+    - title: "GGG STYLE PADWORK — 12 ROUNDS"
+      url: "https://www.youtube.com/watch?v=Uj0Uk1JIRaY"
   privacy:
     label: "Privacy Policy"
     url: /privacy.html
